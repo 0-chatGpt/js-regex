@@ -9,19 +9,22 @@
 .  Any character except for newline
  */
 const luhnAlgo = function (Number) {
-  let sum;
-  let digits = [...Number];
-  for (let i = digits.length - 2; i >= 0; i -= 2) {
-    digits[i] *= 2;
-    if (digits[i] > 9) {
-      digits[i] -= 9;
-    }
-  }
-
-  sum = digits.reduce((acc, digit) => acc + digit, 0);
-  return sum % 10 === 0;
+  let sum = [...Number]
+    .reverse()
+    .map((value, i) => {
+      if (i % 2 == 0) {
+        if (value * 2 > 9) {
+          return value * 2 - 9;
+        }
+        return value * 2;
+      }
+      return value * 1;
+    })
+    .reduce((acc, value) => (acc += value), 0);
+  console.log(sum);
+  return Number[Number.length - 1] == 10 - (sum % 10);
 };
-console.log(luhnAlgo("6500041060857469"));
+
 
 function validateCreditCardNumber(creditCardNumber) {
   // 1 check if the length of the numbers falls between range 13-16
@@ -59,4 +62,5 @@ function validateCreditCardNumber(creditCardNumber) {
   }
 }
 
-// validateCreditCardNumber("5061 1234 5678 9012");
+validateCreditCardNumber("6500041060857469");
+// console.log(luhnAlgo(""));
