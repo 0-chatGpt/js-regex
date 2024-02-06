@@ -30,3 +30,12 @@ For the varous credit card issuers:
 
     Discover:
         Regex Pattern: ^6\d{15}$
+
+
+PS: It is assumed that for the following cards :
+
+    American Express cards always begin with the number 3, more specifically 34 or 37.
+    Visa cards begin with the number 4.
+    Mastercards start with the number 5.
+    Discover Cards begin with the number 6.
+    Verve cards begin with either  5061|5062|5063|5043|5078
